@@ -27,12 +27,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Latest Questions</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?login=true">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?signup=true">SignUp</a>
-                </li>
+                <?php
+                if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Logout</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?login=true">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?signup=true">SignUp</a>
+                    </li>
+                <?php } ?>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

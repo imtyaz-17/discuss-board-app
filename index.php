@@ -10,10 +10,11 @@
 </head>
 <body>
 <?php
+session_start();
 include('./client/header.php');
-if (isset($_GET['signup']))
+if (isset($_GET['signup']) && empty($_SESSION['user']['email']))
     include('./client/signup.php');
-elseif (isset($_GET['login']))
+elseif (isset($_GET['login']) && empty($_SESSION['user']['email']))
     include('./client/login.php');
 
 ?>
