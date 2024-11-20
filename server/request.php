@@ -18,6 +18,24 @@ if (isset($_POST['signup'])) {
     } else {
         echo "Error!!";
     }
-} else {
-    echo "out";
+} elseif (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "select * from users where email ='$email' and password = '$password'";
+    $result = $conn->query($query);
+    if ($result->num_rows == 1) {
+        $name = "";
+        foreach ($result as $row) {
+            $name = $row['name'];
+        }
+        $_SESSION["user"] = ["name" => $name, "email" => $email];
+        header("location: /");
+    } else {
+        echo "Credentials did not matched!!";
+    }
+} elseif (isset($_GET['logout'])) {
+    session_unset();
+    header("location: /");
+
 }

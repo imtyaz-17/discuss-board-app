@@ -30,7 +30,7 @@
                 <?php
                 if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Logout</a>
+                        <a class="nav-link" href="../server/request.php?logout=true">Logout</a>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item">
